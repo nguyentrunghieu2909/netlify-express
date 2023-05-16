@@ -10,6 +10,12 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/test", (req, res) => {
+  res.json({
+    hello: "hi there!"
+  });
+});
+
 router.get('/webhook', (req, res) => {
   if (req.query['hub.verify_token'] === mylovelylady299) {
       res.send(req.query['hub.challenge']);
