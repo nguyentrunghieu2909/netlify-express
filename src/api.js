@@ -4,17 +4,17 @@ const serverless = require("serverless-http");
 const app = express();
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    hello: "hi!"
-  });
-});
+// router.get("/", (req, res) => {
+//   res.json({
+//     hello: "hi!"
+//   });
+// });
 
-router.get("/test", (req, res) => {
-  res.json({
-    hello: "hi there!"
-  });
-});
+// router.get("/test", (req, res) => {
+//   res.json({
+//     hello: "hi there!"
+//   });
+// });
 
 router.get('/webhook', (req, res) => {
   if (req.query['hub.verify_token'] === mylovelylady299) {
