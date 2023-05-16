@@ -1,8 +1,13 @@
+require("dotenv").config();
+const bodyParser = require("body-parser")
 const express = require("express");
 const serverless = require("serverless-http");
 
 const app = express();
 const router = express.Router();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/test", (req, res) => {
   res.json({
@@ -13,12 +18,12 @@ router.get("/test", (req, res) => {
 router.get("/webhook", (req, res) => {
   // Your verify token. Should be a random string.
   let VERIFY_TOKEN = process.env.MY_VERIFY_FB_TOKEN;
-
+  
   // Parse the query params
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
-
+  
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
 
@@ -52,16 +57,16 @@ router.post("/webhook", (req, res) => {
 
 
           // Get the sender PSID
-          let sender_psid = webhook_event.sender.id;
-          console.log('Sender PSID: ' + sender_psid);
+          // let sender_psid = webhook_event.sender.id;
+          // console.log('Sender PSID: ' + sender_psid);
 
           // Check if the event is a message or postback and
           // pass the event to the appropriate handler function
-          if (webhook_event.message) {
-              handleMessage(sender_psid, webhook_event.message);
-          } else if (webhook_event.postback) {
-              handlePostback(sender_psid, webhook_event.postback);
-          }
+          // if (webhook_event.message) {
+          //     handleMessage(sender_psid, webhook_event.message);
+          // } else if (webhook_event.postback) {
+          //     handlePostback(sender_psid, webhook_event.postback);
+          // }
 
       });
 
