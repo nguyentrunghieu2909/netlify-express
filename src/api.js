@@ -10,11 +10,11 @@ const router = express.Router();
 //   });
 // });
 
-// router.get("/test", (req, res) => {
-//   res.json({
-//     hello: "hi there!"
-//   });
-// });
+router.get("/test", (req, res) => {
+  res.json({
+    hello: "hi there!"
+  });
+});
 
 router.get("/webhook", (req, res) => {
   if (req.query['hub.verify_token'] === mylovelylady299) {
