@@ -41,6 +41,30 @@ router.get("/webhook", (req, res) => {
   }
 });
 
+function callSendAPI(sender_psid, response) {
+  // Construct the message body
+  let request_body = {
+      "recipient": {
+          "id": sender_psid
+      },
+      "message": { "text": response }
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  request({
+      "uri": "https://graph.facebook.com/v7.0/me/messages",
+      "qs": { "access_token": process.env.FB_PAGE_TOKEN },
+      "method": "POST",
+      "json": request_body
+  }, (err, res, body) => {
+      if (!err) {
+          console.log('message sent!');
+      } else {
+          console.error("Unable to send message:" + err);
+      }
+  });
+}
+
 router.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
