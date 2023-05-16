@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.16.4",
     "netlify-lambda": "^1.4.3",
+    "request": "^2.88.2",
     "serverless-http": "^1.9.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
     "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
