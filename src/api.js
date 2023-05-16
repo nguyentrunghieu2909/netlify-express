@@ -17,14 +17,11 @@ const router = express.Router();
 // });
 
 router.get("/webhook", (req, res) => {
-  res.json({
-    hello: "hi 2!"
-  });
-  // if (req.query['hub.verify_token'] === mylovelylady299) {
-  //     res.send(req.query['hub.challenge']);
-  // } else {
-  //     res.send('Invalid verify token');
-  // }
+  if (req.query['hub.verify_token'] === mylovelylady299) {
+      res.send(req.query['hub.challenge']);
+  } else {
+      res.send('Invalid verify token');
+  }
 });
 
 app.use(`/.netlify/functions/api`, router);
