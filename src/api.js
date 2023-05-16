@@ -10,6 +10,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get('/webhook', (req, res) => {
+  if (req.query['hub.verify_token'] === mylovelylady299) {
+      res.send(req.query['hub.challenge']);
+  } else {
+      res.send('Invalid verify token');
+  }
+});
+
 app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
