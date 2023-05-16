@@ -11,7 +11,7 @@
     "serverless-http": "^1.9.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src --port=1234",
     "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
   },
   "repository": {
