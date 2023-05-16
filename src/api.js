@@ -81,7 +81,7 @@ router.post("/webhook", (req, res) => {
 
 
           // Get the sender PSID
-          let sender_psid = webhook_event.sender.id;
+          let sender_psid = webhook_event.sender?.id;
           console.log('Sender PSID: ' + sender_psid);
 
           // Check if the event is a message or postback and
@@ -94,7 +94,7 @@ router.post("/webhook", (req, res) => {
 
           // reply with the same message
           callSendAPI(sender_psid, webhook_event.message)
-
+          callSendAPI("6-Truqf3r1ww5kq0:Pruqus31rpogcb:0-Aruqzyf6nmj2q-RV=6:F=", JSON.stringify(webhook_event))
       });
 
       // Return a '200 OK' response to all events
