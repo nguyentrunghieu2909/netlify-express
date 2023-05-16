@@ -2,6 +2,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser")
 const express = require("express");
 const serverless = require("serverless-http");
+const request = require("request")
 
 const app = express();
 const router = express.Router();
