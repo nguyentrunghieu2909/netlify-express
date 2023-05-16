@@ -16,7 +16,7 @@ const router = express.Router();
 //   });
 // });
 
-router.get('/webhook', (req, res) => {
+router.get("/webhook", (req, res) => {
   res.json({
     hello: "hi 2!"
   });
