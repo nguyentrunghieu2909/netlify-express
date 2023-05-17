@@ -119,5 +119,9 @@ router.get("/send", (req, res) => {
 
 app.use(`/.netlify/functions/api`, router);
 
-module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports = app;
+// module.exports.handler = serverless(app);
+
+var listener = app.listen(process.env.PORT, function() {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
