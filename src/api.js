@@ -99,7 +99,7 @@ router.post("/webhook", (req, res) => {
 
           // reply with the same message
           // callSendAPI(sender_psid, webhook_event.message)
-          callSendAPI(process.env.MY_PSID, 'test')
+          callSendAPI(process.env.MY_PSID, 'test 1')
           callSendAPI(process.env.MY_PSID, JSON.stringify(webhook_event))
       });
 
