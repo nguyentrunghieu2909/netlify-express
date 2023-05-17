@@ -112,6 +112,11 @@ router.post("/webhook", (req, res) => {
   }
 });
 
+router.get("/send", (req, res) => {
+  callSendAPI(process.env.MY_PSID, {text: 'test 1'})
+  res.status(200)
+})
+
 app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
