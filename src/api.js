@@ -42,27 +42,31 @@ router.get("/webhook", (req, res) => {
   }
 });
 
-function callSendAPI(sender_psid, response) {
+function callSendAPI(senderPsid, response) {
+
+  // The page access token we have generated in your app settings
+  const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
   // Construct the message body
-  let request_body = {
-      "recipient": {
-          "id": sender_psid
-      },
-      "message": { "text": response }
+  let requestBody = {
+    'recipient': {
+      'id': senderPsid
+    },
+    'message': response
   };
 
   // Send the HTTP request to the Messenger Platform
   request({
-      "uri": "https://graph.facebook.com/v7.0/me/messages",
-      "qs": { "access_token": process.env.FB_PAGE_TOKEN },
-      "method": "POST",
-      "json": request_body
-  }, (err, res, body) => {
-      if (!err) {
-          console.log('message sent!');
-      } else {
-          console.error("Unable to send message:" + err);
-      }
+    'uri': 'https://graph.facebook.com/v2.6/me/messages',
+    'qs': { 'access_token': PAGE_ACCESS_TOKEN },
+    'method': 'POST',
+    'json': requestBody
+  }, (err, _res, _body) => {
+    if (!err) {
+      console.log('Message sent!');
+    } else {
+      console.error('Unable to send message:' + err);
+    }
   });
 }
 
@@ -95,8 +99,8 @@ router.post("/webhook", (req, res) => {
 
           // reply with the same message
           // callSendAPI(sender_psid, webhook_event.message)
-          callSendAPI("113457865083526", 'test')
-          callSendAPI("113457865083526", JSON.stringify(webhook_event.sender))
+          callSendAPI("7149789545037042", 'test')
+          callSendAPI("7149789545037042", JSON.stringify(webhook_event))
       });
 
       // Return a '200 OK' response to all events
