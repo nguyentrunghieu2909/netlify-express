@@ -99,8 +99,8 @@ router.post("/webhook", (req, res) => {
 
           // reply with the same message
           // callSendAPI(sender_psid, webhook_event.message)
-          callSendAPI("7149789545037042", 'test')
-          callSendAPI("7149789545037042", JSON.stringify(webhook_event))
+          callSendAPI(process.env.MY_PSID, 'test')
+          callSendAPI(process.env.MY_PSID, JSON.stringify(webhook_event))
       });
 
       // Return a '200 OK' response to all events
